@@ -1,0 +1,26 @@
+@use 'src/styles/variables' as vars;
+
+.header {
+  position: fixed;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: vars.$pageMaxWidth;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: vars.$colorBg-1;
+  border: 1px solid vars.$colorBorder-1;
+  box-sizing: border-box;
+  z-index: 10;
+
+  .container {
+    position: relative;
+    max-width: vars.$contentMaxWidth;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 16px;
+  }
+}

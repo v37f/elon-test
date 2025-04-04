@@ -1,0 +1,166 @@
+@use 'src/styles/variables' as vars;
+
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  .banner {
+    background-image: url('src/assets/image/main-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    min-height: 660px;
+
+    .clipPlanet {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      -webkit-clip-path: url('#planet-clip');
+      clip-path: url('#planet-clip');
+
+      .content {
+        padding: 138px 0 142px;
+        max-width: vars.$contentMaxWidth;
+        width: 100%;
+        margin: 0 16px;
+        display: flex;
+        justify-content: space-between;
+
+        .leftSide {
+          padding-top: 72px;
+          width: 50.5%;
+          display: flex;
+          flex-direction: column;
+
+          .buttonContainer {
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+
+            .line {
+              position: relative;
+              margin: 72px 8px 0 65px;
+              width: 100%;
+              height: 1px;
+              background: linear-gradient(
+                to left,
+                rgb(255, 255, 255),
+                rgba(255, 255, 255, 0.2)
+              );
+
+              &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 100px;
+                height: 1px;
+
+                top: 0;
+                left: 0;
+                background: linear-gradient(
+                  to right,
+                  rgba(255, 255, 255, 0.2),
+                  transparent 75%
+                );
+
+                transform: rotate(220deg);
+                transform-origin: left center;
+              }
+
+              &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                border: 1px solid #fff;
+                top: -3px;
+                right: -6px;
+                background: #000;
+              }
+            }
+          }
+        }
+
+        .rightSide {
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .mainPage {
+    .banner {
+      .clipPlanet {
+        position: static;
+        -webkit-clip-path: none;
+        clip-path: none;
+
+        .content {
+          flex-direction: column;
+          align-items: center;
+          gap: 80px;
+          padding: 138px 0 0;
+
+          .leftSide {
+            width: 65%;
+
+            .buttonContainer {
+              align-self: center;
+              flex-direction: column-reverse;
+              align-items: center;
+
+              .line {
+                width: 1px;
+                height: 100px;
+                margin: 0;
+
+                background: linear-gradient(
+                  to bottom,
+                  rgb(255, 255, 255),
+                  transparent 92%
+                );
+
+                &::before {
+                  content: none;
+                }
+
+                &::after {
+                  top: -6px;
+                  right: -3px;
+                }
+              }
+            }
+          }
+
+          .rightSide {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .mainPage {
+    .banner {
+      margin-bottom: 20px;
+      .clipPlanet {
+        .content {
+          gap: 100px;
+          .leftSide {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

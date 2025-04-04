@@ -1,0 +1,65 @@
+@use 'src/styles/variables' as vars;
+
+.navigation {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .list {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    .item {
+      padding: 9px 0 9px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease-in-out;
+
+      .link {
+        font-family: vars.$fontPrimary;
+        font-size: 16px;
+        font-weight: 100;
+        line-height: 22px;
+        text-decoration: none;
+        white-space: nowrap;
+        color: vars.$colorText;
+        transition: color 0.15s ease-in-out;
+      }
+    }
+  }
+}
+
+@media (hover: hover) {
+  .navigation {
+    .list {
+      .item:hover {
+        border-color: vars.$colorLinkUnderline;
+        .link {
+          color: vars.$colorLinkHoverText;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navigation {
+    position: relative;
+    width: fit-content;
+    background: vars.$colorBg-1;
+    padding: 8px;
+    border: 1px solid vars.$colorBorder-1;
+    max-width: 200px;
+    backdrop-filter: blur(10px);
+    top: 0;
+    right: 0;
+
+    .list {
+      flex-direction: column;
+    }
+  }
+}

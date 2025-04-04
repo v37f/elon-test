@@ -1,0 +1,7 @@
+@use 'src/styles/normalize.css';
+@use 'src/styles/variables' as vars;
+@use 'src/styles/fonts';
+
+body {
+  background-color: vars.$colorBg-2;
+}

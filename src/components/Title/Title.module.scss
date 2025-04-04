@@ -1,0 +1,47 @@
+@use 'src/styles/variables' as vars;
+
+.title {
+  margin: 0 0 88px;
+  width: fit-content;
+
+  .text {
+    display: block;
+    font-family: vars.$fontPrimary;
+    background-clip: text;
+    color: transparent;
+    background-image: vars.$gradientTitleText;
+  }
+
+  .firstString {
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 56px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .secondString {
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 300;
+    text-transform: lowercase;
+    letter-spacing: 0.6px;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .title {
+    margin: 0 0 165px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .title {
+    margin: 0 0 180px;
+    align-self: center;
+    .firstString {
+      font-size: 40px;
+      line-height: 40px;
+    }
+  }
+}

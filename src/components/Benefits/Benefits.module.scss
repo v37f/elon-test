@@ -1,0 +1,153 @@
+@use 'src/styles/mixins' as mix;
+@use 'src/styles/variables' as vars;
+
+.benefits {
+  @include mix.reset-list;
+  display: grid;
+  grid-template-columns: repeat(2, 185px);
+  grid-template-rows: repeat(2, 185px);
+  gap: 10px;
+  transform: translateX(34px);
+  width: fit-content;
+
+  .item {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: vars.$fontPrimary;
+    font-style: normal;
+    color: vars.$colorBenefitsText;
+    opacity: 0.6;
+    aspect-ratio: 1;
+    cursor: pointer;
+
+    .text {
+      margin: 0;
+      font-size: 18px;
+      line-height: 18px;
+      font-weight: 100;
+
+      &:first-child {
+        margin-bottom: 18px;
+      }
+    }
+
+    .accent {
+      font-size: 60px;
+      line-height: 60px;
+      font-weight: 700;
+    }
+
+    &:nth-child(1) {
+      background: linear-gradient(
+        -45deg,
+        vars.$colorBenefitsItemBg,
+        transparent 45%
+      );
+    }
+
+    &:nth-child(2) {
+      background: linear-gradient(
+        45deg,
+        vars.$colorBenefitsItemBg,
+        transparent 45%
+      );
+    }
+
+    &:nth-child(3) {
+      background: linear-gradient(
+        -135deg,
+        vars.$colorBenefitsItemBg,
+        transparent 45%
+      );
+    }
+
+    &:nth-child(4) {
+      background: linear-gradient(
+        135deg,
+        vars.$colorBenefitsItemBg,
+        transparent 45%
+      );
+    }
+  }
+}
+
+@media (hover: hover) {
+  .benefits > .item:hover {
+    opacity: 1;
+    border-width: 0;
+    border-style: solid;
+
+    &:nth-child(1) {
+      border-right-width: 1px;
+      border-bottom-width: 1px;
+      border-image: linear-gradient(
+        -45deg,
+        rgb(109, 109, 109),
+        transparent 40%
+      );
+      border-image-slice: 1;
+    }
+
+    &:nth-child(2) {
+      border-left-width: 1px;
+      border-bottom-width: 1px;
+      border-image: linear-gradient(45deg, rgb(109, 109, 109), transparent 40%);
+      border-image-slice: 1;
+    }
+
+    &:nth-child(3) {
+      border-right-width: 1px;
+      border-top-width: 1px;
+      border-image: linear-gradient(
+        -135deg,
+        rgb(109, 109, 109),
+        transparent 40%
+      );
+      border-image-slice: 1;
+    }
+
+    &:nth-child(4) {
+      border-left-width: 1px;
+      border-top-width: 1px;
+      border-image: linear-gradient(
+        135deg,
+        rgb(109, 109, 109),
+        transparent 40%
+      );
+      border-image-slice: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .benefits {
+    transform: none;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, auto);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .benefits {
+    max-width: 80%;
+    transform: none;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+@media only screen and (max-width: 424px) {
+  .benefits {
+    .item {
+      .accent {
+        font-size: 46px;
+        line-height: 46px;
+      }
+    }
+  }
+}

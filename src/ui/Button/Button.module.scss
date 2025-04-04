@@ -1,0 +1,94 @@
+@use 'src/styles/variables' as vars;
+
+.buttonWrapper {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-image: vars.$gradientBorder;
+  border-image-slice: 1;
+  background-color: vars.$colorBg-3;
+  transition: box-shadow 0.15s ease-in-out;
+
+  &::before,
+  &::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    box-sizing: border-box;
+    position: absolute;
+  }
+  &::before {
+    bottom: -1px;
+    left: -1px;
+    border-left: 1px solid vars.$colorBorderAngle;
+    border-bottom: 1px solid vars.$colorBorderAngle;
+  }
+
+  &::after {
+    top: -1px;
+    right: -1px;
+    border-top: 1px solid vars.$colorBorderAngle;
+    border-right: 1px solid vars.$colorBorderAngle;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:has(.button:disabled) {
+    border-image: none;
+    position: static;
+    background-color: vars.$colorBg-4;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .button {
+    position: relative;
+    padding: 9px 23px;
+    border: none;
+    background-color: transparent;
+    font-family: vars.$fontPrimary;
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 16px;
+    color: vars.$colorText;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      box-sizing: border-box;
+      position: absolute;
+
+      background: vars.$gradientAngleBlink;
+      filter: blur(5px);
+    }
+    &::before {
+      bottom: -3px;
+      left: -3px;
+    }
+    &::after {
+      top: -3px;
+      right: -3px;
+    }
+
+    &:disabled {
+      position: static;
+      cursor: default;
+      color: vars.$colorButtonDisabledText;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .buttonWrapper:hover {
+    box-shadow: 0 0 15px vars.$colorText;
+  }
+}
